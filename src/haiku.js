@@ -1,3 +1,5 @@
+
+
 export class Haiku {
     constructor(line1, line2, line3) {
         this.line1 = line1;
@@ -5,6 +7,7 @@ export class Haiku {
         this.line3 = line3;
 				this.characters = [];
 				this.words = [];
+				this.wordArr = [];
 				this.numberOfVowels = 0;
 				this.vowels = ["a", "A", "e", "E", "i", "I", "o", "O", "u", "U"];
     }
@@ -23,18 +26,18 @@ export class Haiku {
 		let characters = this.characters;
 		let vowels = this.vowels;
 		let words = this.words;
-		this.words.forEach(function(word) {
-			// console.log(word);
+		let wordArr = this.wordArr; 
+		words.forEach(function(word) {
 			characters = word.split("");
-			if (vowels.includes(characters.length -1)) {
+			if (vowels.includes(characters[characters.length -1])) {
 				characters.pop();
-				console.log(characters);
-				characters.join("");
-				console.log(characters);
 			}
-			words.join("");
-		})
+			characters = characters.join("");
+			wordArr.push(characters);
+		});
+		this.characters = wordArr.join(" ");
+		console.log(this.characters);
 	}
-}
+};
 
 

@@ -17,7 +17,7 @@ describe ('Haiku', () => {
     });
     test('should remove silent vowels', () => {
         haiku.silentVowels(line1)
-        expect(haiku.line1).toEqual("hell ther");
+        expect(haiku.characters).toEqual("Hell ther");
     });
 
 });
