@@ -13,6 +13,6 @@ describe ('Haiku', () => {
     });
     test('should detect number of vowels in input', () => {
         haiku.countVowels(line1)
-        expect(haiku.numberOfVowels).toEqual(45);
+        expect(haiku.numberOfVowels).toEqual(4);
     });
 });
