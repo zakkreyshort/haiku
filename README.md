@@ -13,7 +13,7 @@ _This project will test if your words are a haiku._
 
 | Specification | Example Input | Example Output |
 | ------------- |:-------------:| -------------------:|
-| check to see if words are inputted | this is my input | true |
+| check to see if words are inputted | this is my input | this is my input |
 | detect number of vowels in inputted words | apple | 2 |
 | subtract silent vowels | apple | appl |
 | if diphthong is present, subtract vowel | look | lok |
