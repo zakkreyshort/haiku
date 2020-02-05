@@ -6,3 +6,4 @@ describe ('Haiku', () => {
         expect(haiku.line1).toEqual("");
     });
 });
+
