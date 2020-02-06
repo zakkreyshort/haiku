@@ -6,10 +6,13 @@ export class Haiku {
         this.line2 = line2;
         this.line3 = line3;
 				this.characters = [];
+				this.charactersAfterSiltentVow = [];
+				this.charactersAfterReplacingVow = [];
 				this.words = [];
 				this.wordArr = [];
 				this.dipth = [];
-				this.numberOfVowels = 0;
+        this.numberOfVowels = 0;
+        this.numberOfSyllables = 0;
 				this.vowels = ["a", "A", "e", "E", "i", "I", "o", "O", "u", "U"];
     }
     
@@ -20,6 +23,7 @@ export class Haiku {
 						this.numberOfVowels++;
 					}
         }
+        return this.numberOfVowels;
 			};
 			
 	silentVowels(line) {
@@ -30,81 +34,54 @@ export class Haiku {
 		let wordArr = this.wordArr; 
 		words.forEach(function(word) {
 			characters = word.split("");
-			if (vowels.includes(characters[characters.length -1])) {
+			if ((characters[characters.length -1]) === "e") {
 				characters.pop();
 			}
 			characters = characters.join("");
 			wordArr.push(characters);
 		});
-		this.characters = wordArr.join(" ");
-
+    this.charactersAfterSiltentVow = wordArr.join(" ");
+    console.log('silent vows', this.charactersAfterSiltentVow)
+    return this.charactersAfterSiltentVow;
 	}
 
 
-	replaceVowels (line){
+	replaceVowels(line){
+    console.log('line',)
 		this.words = line.split(" ");
-		let characters = this.characters;
+		let characters = this.charactersAfterSiltentVow;
 		let vowels = this.vowels;
 		let words = this.words;
-		let wordArr = this.wordArr;
+    let wordArr = [];
+    
 
 		words.forEach(function(word){
 			characters = word.split("");
 			for(let i = 0; i < characters.length; i++){
 				if (vowels.includes(characters[i])){
 					if (vowels.includes(characters[i-1])) {
-					// characters[i]
 					characters[i] = "x";
-					// let rep = characters[i].replace(characters[i], "x");
 				}
 			}
 		}
-		characters = characters.join("");
-		// console.log("characters:",characters);
+    characters = characters.join("");
+    console.log(characters);
+    
 		wordArr.push(characters);
-	})
-	this.characters = wordArr.join(" ");
-	}
-
-// 	doubleVowels(line){
-// 		this.words = line.split(" ");
-// 		let characters = this.characters;
-// 		let vowels = this.vowels;
-// 		let words = this.words;
-// 		let wordArr = this.wordArr; 
-		
-		
-// 		words.forEach(function(word) {
-// 			characters = word.split("");
-// 			for (let i = 0; i < characters.length; i++) {
-// 				// push current character into wordArr
-// 				wordArr.push(characters[i]);
-// 				if (vowels.includes(characters[i])) {
-					
-// 					if (vowels.includes(characters[i-1])) {
-// 						// wordArr.splice(characters[i], vowels);
-// 						var index = wordArr.indexOf(vowels);
-// 						if (index !== -1) {
-// 							wordArr[index] = x 
-// 						}
-// 						console.log('after',wordArr)
-
-// 						// wordArr.splice(0, vowels);
-// 						// wordArr.push(characters);
-						
-// 						// remove character from array 
-// 						// console.log(wordArr)
-						
-// 					} else {
-// 					};
-// 				};
-				
-// 			};
-// 			// console log = 4 arrays split by character
-// 		});
-// 		// this.characters = wordArr.join("");
-// 		// console.log(this.characters)
-// 		// console.log(characters); CL = array with haiku
-//
- 	// }
-};
+  })
+  console.log('wordarr', wordArr);
+  this.charactersAfterReplacingVow = wordArr.join(" ");
+  console.log('replacing vows', this.charactersAfterReplacingVow)
+  return this.charactersAfterReplacingVow;
+  }
+  
+  syllableCounter(line){
+    let characters = this.charactersAfterReplacingVow = line.split("");
+        for(let i = 0; i < characters.length; i++){
+					if(this.vowels.includes(characters[i])){
+            this.numberOfSyllables++;
+          };
+        }
+        return this.numberOfSyllables;
+      }
+    };
