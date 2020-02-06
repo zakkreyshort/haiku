@@ -19,5 +19,8 @@ describe ('Haiku', () => {
         haiku.silentVowels(line1)
         expect(haiku.characters).toEqual("Hell ther");
     });
-
+    test('should detect double-vowels and remove one', () => {
+        haiku.replaceVowels(line2)
+        expect(haiku.characters).toEqual("This is a haxku")
+    });
 });
