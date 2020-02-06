@@ -29,9 +29,8 @@ export class Haiku {
 	silentVowels(line) {
 		this.words = line.split(" ");
 		let characters = this.characters;
-		let vowels = this.vowels;
 		let words = this.words;
-		let wordArr = this.wordArr; 
+		let wordArr = []; 
 		words.forEach(function(word) {
 			characters = word.split("");
 			if ((characters[characters.length -1]) === "e") {
@@ -41,18 +40,16 @@ export class Haiku {
 			wordArr.push(characters);
 		});
     this.charactersAfterSiltentVow = wordArr.join(" ");
-    console.log('silent vows', this.charactersAfterSiltentVow)
     return this.charactersAfterSiltentVow;
 	}
 
 
 	replaceVowels(line){
-    console.log('line',)
 		this.words = line.split(" ");
 		let characters = this.charactersAfterSiltentVow;
 		let vowels = this.vowels;
 		let words = this.words;
-    let wordArr = [];
+    let wordArr = this.wordArr;
     
 
 		words.forEach(function(word){
@@ -65,13 +62,9 @@ export class Haiku {
 			}
 		}
     characters = characters.join("");
-    console.log(characters);
-    
 		wordArr.push(characters);
   })
-  console.log('wordarr', wordArr);
   this.charactersAfterReplacingVow = wordArr.join(" ");
-  console.log('replacing vows', this.charactersAfterReplacingVow)
   return this.charactersAfterReplacingVow;
   }
   
